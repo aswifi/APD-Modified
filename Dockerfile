@@ -15,11 +15,13 @@ FROM p3terx/s6-alpine
 
 RUN apk add --no-cache jq findutils git && \
     curl -fsSL git.io/aria2c.sh | bash && \
-    rm -rf /config /var/cache/apk/* /tmp/*
+    rm -rf /config/* /var/cache/apk/* /tmp/*
     
 WORKDIR /
 
-COPY rootfs config /
+ADD config /config
+
+COPY rootfs /
 
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     RCLONE_CONFIG=/config/rclone.conf \
