@@ -43,8 +43,6 @@ RUN chmod +x rclone.sh
 
 RUN ./rclone.sh
 
-RUN rm rclone.sh
-
 EXPOSE \
     80 \
     6888 \
