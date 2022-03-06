@@ -35,9 +35,11 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     IPV6_MODE= \
     UMASK_SET= \
     SPECIAL_MODE= \
-    RCLONE_CONFIG_BASE64=
+    RCLONE_CONFIG_BASE64=""
 
-RUN bash config/script/rclone.sh
+ADD rclone.sh /
+
+RUN chmod +x rclone.sh
 
 EXPOSE \
     80 \
