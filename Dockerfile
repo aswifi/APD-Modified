@@ -15,7 +15,7 @@ FROM p3terx/s6-alpine
 
 RUN apk add --no-cache jq findutils && \
     curl -fsSL git.io/aria2c.sh | bash && \
-    rm -rf /config/* /var/cache/apk/* /tmp/*
+    rm -rf /config/script.conf /var/cache/apk/* /tmp/*
     
 WORKDIR /
 
