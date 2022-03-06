@@ -6,14 +6,14 @@
 #
 # https://github.com/P3TERX/Aria2-Pro-Docker
 #
-# Copyright (c) 2020-2021 P3TERX <https://p3terx.com>
+# Copyright (c) 2020-2022 P3TERX <https://p3terx.com>
 #
 # This is free software, licensed under the MIT License.
 # See /LICENSE for more information.
 
 FROM p3terx/s6-alpine
 
-RUN apk add --no-cache jq findutils git && \
+RUN apk add --no-cache jq findutils && \
     curl -fsSL git.io/aria2c.sh | bash && \
     rm -rf /config/* /var/cache/apk/* /tmp/*
     
