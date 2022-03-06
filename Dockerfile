@@ -37,7 +37,7 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     SPECIAL_MODE= \
     RCLONE_CONFIG_BASE64=
 
-RUN echo $RCLONE_CONFIG_BASE64 | base64 -d > /config/rclone.conf
+RUN bash config/script/rclone.sh
 
 EXPOSE \
     80 \
