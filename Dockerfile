@@ -19,8 +19,6 @@ RUN apk add --no-cache jq findutils git && \
     
 WORKDIR /
 
-ADD config /config
-
 COPY rootfs /
 
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
@@ -37,9 +35,9 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     SPECIAL_MODE= \
     RCLONE_CONFIG_BASE64=""
 
-ADD rclone.sh /
+RUN chmod +x /config/script/rclone.sh
 
-RUN chmod +x rclone.sh
+RUN ./config/script/rclone.sh
 
 EXPOSE \
     80 \
