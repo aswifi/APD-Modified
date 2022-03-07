@@ -21,7 +21,7 @@ WORKDIR /
 
 COPY rootfs /
 
-COPY script config/script/
+COPY script /config/script/
 
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     RCLONE_CONFIG=/config/rclone.conf \
@@ -37,13 +37,11 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     SPECIAL_MODE= \
     RCLONE_CONFIG_BASE64=""
 
-RUN mv config/script.conf config/script.conf.bak
+COPY config /config/
 
-COPY config config/
+RUN chmod +x /config/script/rclone.sh
 
-RUN chmod +x config/script/rclone.sh
-
-RUN bash config/script/rclone.sh
+RUN bash /config/script/rclone.sh
 
 EXPOSE \
     80 \
