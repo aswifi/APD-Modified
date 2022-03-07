@@ -37,7 +37,7 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     SPECIAL_MODE= \
     RCLONE_CONFIG_BASE64=""
 
-RUN mv /config/rclone.conf /config/rclone.conf.bak
+RUN mv /config/script.conf /config/script.conf.bak
 
 COPY config /config/
 
