@@ -15,7 +15,7 @@ FROM p3terx/s6-alpine
 
 RUN apk add --no-cache jq findutils && \
     curl -fsSL git.io/aria2c.sh | bash && \
-    rm -rf /config/script.conf /var/cache/apk/* /tmp/*
+    rm -rf /var/cache/apk/* /tmp/*
     
 WORKDIR /
 
@@ -35,9 +35,11 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     SPECIAL_MODE= \
     RCLONE_CONFIG_BASE64=""
 
-ADD config/script.conf /config/
+RUN mv /config/rclone.conf /config/rclone.conf.bak
 
-ADD script/rclone.sh /config/script/
+ADD config/script.conf /config/script.conf
+
+ADD script/rclone.sh /config/script/rclone.sh
 
 RUN chmod +x /config/script/rclone.sh
 
