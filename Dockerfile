@@ -21,6 +21,8 @@ WORKDIR /
 
 COPY rootfs /
 
+COPY script /config/script/
+
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     RCLONE_CONFIG=/config/rclone.conf \
     UPDATE_TRACKERS=true \
@@ -37,9 +39,7 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
 
 RUN mv /config/rclone.conf /config/rclone.conf.bak
 
-ADD config/script.conf /config/script.conf
-
-ADD script/rclone.sh /config/script/rclone.sh
+COPY config /config/
 
 RUN chmod +x /config/script/rclone.sh
 
