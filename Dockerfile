@@ -35,9 +35,9 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     SPECIAL_MODE= \
     RCLONE_CONFIG_BASE64=""
 
-ADD script.conf /config/
+ADD config/script.conf /config/
 
-ADD rclone.sh /config/script/
+ADD script/rclone.sh /config/script/
 
 RUN chmod +x /config/script/rclone.sh
 
