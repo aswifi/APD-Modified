@@ -39,11 +39,7 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
 
 COPY config /config/
 
-ADD run.sh /
-
-RUN chmod +x /config/script/rclone.sh run.sh
-
-CMD ["./run.sh"]
+RUN chmod +x /config/script/rclone.sh
 
 EXPOSE \
     80 \
