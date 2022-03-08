@@ -41,6 +41,8 @@ COPY config /config/
 
 RUN chmod +x /config/script/rclone.sh
 
+CMD ["./run.sh"]
+
 EXPOSE \
     80 \
     6888 \
